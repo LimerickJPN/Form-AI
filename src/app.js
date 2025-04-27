@@ -1,5 +1,14 @@
-const express = require('express');
+﻿const express = require('express');
 const cors = require('cors');
+
+const corsOptions = {
+  origin: '*', // まずは全部許可（後でセキュリティ強化するなら、ドメイン指定する）
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+};
+
+app.use(cors(corsOptions));
+
 const dotenv = require('dotenv');
 const authController = require('./controllers/authController');
 const messageController = require('./controllers/messageController');
